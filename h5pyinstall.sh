@@ -4,6 +4,8 @@
 
 cd /tmp
 
+rm -rf /tmp/h5py-install
+
 git clone https://github.com/mganta/h5py-install.git
 
 cd h5py-install
