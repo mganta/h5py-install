@@ -1,15 +1,16 @@
 package:
   name: h5spark
-  version: latest
+  version: "0.1"
 
 source:
-  git_rev: latest
-  git_url: https://github.com/mganta/h5py-install.git
+  git_rev: master
+  git_url: https://github.com/mganta/h5spark.git
 
 requirements:
   host:
     - python
     - setuptools
+    - nose
 
   run:
     - python
@@ -19,6 +20,6 @@ test:
     - h5spark
 
 about:
-  home: https://github.com/mganta/h5py-install
+  home: https://github.com/mganta/h5spark
   license: Apache
   license_file: LICENSE
