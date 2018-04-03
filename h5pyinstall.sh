@@ -4,12 +4,12 @@
 
 cd /tmp
 
-rm -rf /tmp/h5py-install
+rm -rf /tmp/h5spark
 
-git clone https://github.com/mganta/h5py-install.git
+git clone https://github.com/mganta/h5spark.git
 
-cd h5py-install
+/usr/bin/anaconda/bin/conda update --yes conda-build
 
-#sudo python setup.py install
-sudo /usr/bin/anaconda/bin/conda-build h5spark
-sudo /usr/bin/anaconda/bin/conda install --use-local h5spark
+#cd h5spark
+/usr/bin/anaconda/bin/conda-build h5spark
+/usr/bin/anaconda/bin/conda install --yes --use-local h5spark
