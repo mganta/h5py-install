@@ -2,7 +2,7 @@
 
 usage() {
     echo ""
-    echo "Usage: sudo -E bash mount_storage.sh <storage-account-name> <storage-account-key> <container-name>" ;
+    echo "Usage: sudo -E bash mount_storage.sh <storage-account-name> <storage-account-key> <container-name> <dataset-path>" ;
     exit 132;
 }
 
@@ -28,6 +28,12 @@ if [ -z "$3" ]
         exit 139
 fi
 
+if [ -z "$4" ]
+    then
+        usage
+        echo "dataset path  must be provided."
+        exit 140
+fi
 
 
 STORAGEACCOUNTNAME=$1
@@ -39,6 +45,7 @@ echo STORAGE ACCOUNT IS: $STORAGEACCOUNTNAME
 
 STORAGEACCOUNTKEY=$2
 CONTAINERNAME=$3
+DATASETPATH=$4
 
 #install blobfuse
 wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
@@ -65,3 +72,5 @@ mkdir /fusecontainer
 chmod 755 /fusecontainer
 
 sudo blobfuse /fusecontainer --tmp-path=/mnt/blobfusetmp  --config-file=/fuseconfig/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o allow_other
+
+sudo ln -sf /fusecontainer/$DATASETPATH $DATASETPATH
